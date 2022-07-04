@@ -1,0 +1,252 @@
+#-----------------------------------------------------------------
+Assignment 02
+
+#-----------------------------------------------------------------
+Purpose:
+
+  * Demonstrate working flex / C development environment.
+
+  * Demonstrate ability to write some more simple Regular
+      Expressions for various token categories and their
+      associated processing routines.
+
+#-----------------------------------------------------------------
+Background:
+
+  * Just an extension of HMWK 01.
+
+  * A comment begins with "//" and stretches to the end of the
+      current line.
+
+  * A full real literal is one of the following formats AND
+      NOTHING ELSE!
+
+      (1) A decimal point followed by a series of decimal digits,
+            0 through 9.
+
+      (2) A series of decimal digits followed by a decimal point.
+
+      (3) A series of decimal digits followed by a decimal point
+            followed by a series of decimal digits.
+
+      (4) Either (1), (2), or (3) followed by an exponent.
+
+      (5) A series of decimal digits followed by an exponent.
+
+    An exponent is the letter e or E ( optionally followed by a
+      + or - sign ) followed by a series of decimal digits.
+
+  * A based integer literal is one of the following formats AND
+      NOTHING ELSE!
+
+      (1) The characters 0b followed by a series of binary digits,
+            0 and 1.
+
+      (2) The characters 0o followed by a series of octal digits,
+            0 though 7.
+
+      (3) The characters 0x followed by a series of hex digits,
+            0 through 9 and A through F (upper or lower case).
+
+    A based integer literal is returned as the token category
+      tok_INT_LIT with the value of the literal saved in
+      yylval.intval.
+
+  * A character literal begins with a ' character and ends with a
+      ' character.  Inbetween the ' characters may be any of the
+      following AND NOTHING ELSE!
+
+      (1) Any character except ', \, or a newline.
+
+      (2) An escape sequence.
+
+    A character literal is returned as the token category
+      tok_INT_LIT with the value of the literal saved in
+      yylval.intval.  (FYI:  character literals in C and C++ are
+      just another way to write integer values.  Really! :)
+
+  * An escape sequence is a \ character followed by one of the
+      following AND NOTHING ELSE!
+
+      (1) One of the characters ', ", ?, \, a, b, f, n, r, t, v.
+            The integer value of each of these sequences is
+
+                 \'    39
+                 \"    34
+                 \?    63
+                 \\    92
+                 \a     7
+                 \b     8
+                 \f    12
+                 \n    10
+                 \r    13
+                 \t     9
+                 \v    11
+
+      (2) The character x followed by one or two hex digits.  The
+            integer value of this sequence is the value of the hex
+            digits.
+
+      (3) One, two, or three octal digits.  If three octal digits
+            are supplied, the first digit is limited to the
+            digits 0, 1, 2, 3.  The integer value of this sequence
+            is the value of the octal digits.
+
+    Escape sequences themselves are not of any token category, but
+    they are used in forming token categories.  An escape sequence
+    has the integer value as described above.
+
+#-----------------------------------------------------------------
+Tasks:
+
+  1. Download hmwk_02_dalioba.zip from Canvas.
+
+  2. Unzip the file somewhere convenient.
+
+  3. Change 'dalioba' in the name of the directory to your NetID.
+     (Your NetID is three letters followed by four or five digits.
+      The directory name will now be something like
+      'hmwk_02_abc1234' but with _your_ NetID in place of
+      'abc1234'.)
+
+  4. Look in that directory.  There's a Template subdirectory that
+     has some files in it.  Move them up one level into the
+     'hmwk_02_abc1234' directory.
+
+  5. Change the header lines in the files myLexer.l.
+
+      -- Line 1:  Family name first, then a comma, then
+                  personal name.
+
+      -- Line 2:  Your NetID.
+
+      -- Line 3:  The date you edited the file, in the format
+                  YYYY-MM-DD (all digits!).
+
+  6. The template version of the lexer cannot be run because it is
+      missing some Name Definitions and Rules.
+
+  7. Edit myLexer.l and add the four regular expressions for these
+      Defined Names:
+
+      (72)  EXPONENT      TODO: Put an RE for a real literal exponent here.
+      (77)  CHAR_ESCAPE   TODO: Put an RE for a single character escape here.
+      (78)  HEX_ESCAPE    TODO: Put an RE for a hex escape here.
+      (79)  OCTAL_ESCAPE  TODO: Put an RE for an octal escape here.
+
+  8. Now add the seven (7) rules for doing the improved token
+      processing:
+
+      ( 95)   TODO: Put a rule here that recognizes 0b, 0o, and 0x hex literals ...
+      (100)   TODO: Put a rule here that recognizes an ordinary (i.e., NOT an ...
+      (106)   TODO: Put a rule here that recognizes a single character escape ...
+      (114)   TODO: Put a rule here that recognizes a hex escape sequence as a ...
+      (119)   TODO: Put a rule here that recognizes an octal escape sequence as ...
+      (124)   TODO: Put a rule here that recognizes a complete real literal (as ...
+      (158)   TODO: Put a rule here that recognizes (and ignores!) a comment.
+
+      Remember, a rule consists of two parts, the Pattern that
+      gives the regular expression that will match characters and
+      the Processing that will deal with the characters once they
+      have been matched.
+
+  9. Once you have finished these two editing steps, build myLexer
+      and run it on the examples.  Save the results you get for
+      each example and compare them to those in the Results/
+      subdirectory.
+
+      If you've done everything properly, your results should
+      match those in Results/ EXACTLY.
+
+#-----------------------------------------------------------------
+Submission:
+
+Make a zipfile of your 'hmwk_02_abc1234' directory (with 'abc1234'
+changed to YOUR NetID and with your myLexer.l file in it) and
+submit this zipfile on Canvas as your results for this assignment.
+
+All your zipfile should include is a directory with one file in
+it, your version of myLexer.l (did you update the headers
+correctly?).
+
+Do NOT include any other files.
+
+#-----------------------------------------------------------------
+Hints:
+  1. Ensure your program compiles and runs correctly.  You should
+      not get ANY warnings or errors when you compile.  ALWAYS
+      compile your code with -Wall and -Wextra and deal with ANY
+      warnings or errors that are identified.  ALWAYS compile your
+      code with -fsanitize=leak and -fsanitize=address and deal
+      with ANY warnings or errors reported.
+
+     Generating warnings or errors, not compiling, not running,
+      core dumping, crashing, going into an infinite loop, getting
+      the wrong answers, getting memory errors ... will earn you
+      ZERO points.
+
+     Ensure your output messages match the format shown in the
+      results files.  The output is going to be checked by a
+      program, so it has to match EXACTLY.  Not matching EXACTLY
+      will earn you ZERO points.
+
+     ('EXACTLY' means character-by-character the same.  No, e.g.,
+      differences in spacing, no changes in wording, no changes
+      in punctuation, no changes in capitalization, and so forth.)
+
+  2. Ensure that you update the three header lines in the source
+      file with YOUR name (family name first, then a comma, then
+      your personal name), YOUR NetID, and the date you edit the
+      file, in the format YYYY-MM-DD (all digits!).
+
+     Not updating the header lines properly will cost you points.
+
+  3. Ensure your submission is packaged EXACTLY as has been
+      described above.
+
+      -- Your submission should be a ZIP FILE (not a tar, rar, gz,
+         or any other kind of compressed file).
+
+      -- The zip file should be named 'hmwk_02_abc1234.zip' (with
+         'abc1234' replaced with YOUR NetID).
+
+      -- This zip file should have ONE item in it, a directory
+         named 'hmwk_02_abc1234'  (with 'abc1234' replaced with
+         YOUR NetID).
+
+      -- Your file should be in that directory.  The file should
+         be named myLexer.l.
+
+     Submissions in the wrong format score ZERO points.
+
+  4. Your submission is going to be tried against other test
+      files when it's evaluated for credit.  You DEFINITELY need
+      to make some test cases of your own to ensure that your
+      regular expressions for tok_REAL_LIT and tok_STR_LIT are
+      working properly (and that you didn't disturb anything
+      else in the lexer).
+
+  5. This is still not a lot of work.  The reference solution has
+      this many lines of code for each of the rules:
+
+      [15]   ( 95)   TODO: Put a rule here that recognizes 0b, 0o, and 0x hex literals ...
+      [ 3]   (100)   TODO: Put a rule here that recognizes an ordinary (i.e., NOT an ...
+      [15]   (106)   TODO: Put a rule here that recognizes a single character escape ...
+      [ 4]   (114)   TODO: Put a rule here that recognizes a hex escape sequence as a ...
+      [ 4]   (119)   TODO: Put a rule here that recognizes an octal escape sequence as ...
+      [ 8]   (124)   TODO: Put a rule here that recognizes a complete real literal (as ...
+      [ 1]   (158)   TODO: Put a rule here that recognizes (and ignores!) a comment.
+
+      for a grand total of 50 lines of code.  Easy!
+
+  6. After you submit your zip file on Canvas, download it from
+      Canvas into an empty directory, unzip it, and check that
+      your submission is in the proper format, that the program
+      runs and prints the correct output, that you updated the
+      header lines correctly, and so forth.
+
+  7. Are you CERTAIN you complied with all of these nit-picking
+      instructions?  Really?  Maybe you ought to check just one
+      more time. :)
+
+#-----------------------------------------------------------------

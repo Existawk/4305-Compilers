@@ -1,0 +1,98 @@
+ (BLOCK
+  (FOR "i" 1
+   (LITERAL INTEGER 1)
+   (LITERAL INTEGER 10)
+   (LITERAL INTEGER 1)
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "i is now ")
+     (ID "i")
+     (LITERAL STRING "\12")
+    )
+   )
+  )
+  (FOR "j" -1
+   (BOP ADD
+    (LITERAL INTEGER 1)
+    (BOP MULTIPLY
+     (LITERAL INTEGER 2)
+     (LITERAL INTEGER 3)
+    )
+   )
+   (BOP SUBTRACT
+    (BOP DIVIDE
+     (LITERAL INTEGER 17)
+     (LITERAL INTEGER 4)
+    )
+    (BOP ADD
+     (BOP ADD
+      (LITERAL INTEGER 1)
+      (LITERAL INTEGER 1)
+     )
+     (LITERAL INTEGER 1)
+    )
+   )
+   (LITERAL INTEGER -1)
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "j is now ")
+     (ID "j")
+     (LITERAL STRING "\12")
+    )
+   )
+  )
+  (FOR "k" 1
+   (BOP DIVIDE
+    (BOP ADD
+     (LITERAL INTEGER 19)
+     (LITERAL INTEGER 21)
+    )
+    (BOP MULTIPLY
+     (LITERAL INTEGER 8)
+     (LITERAL INTEGER 5)
+    )
+   )
+   (LITERAL INTEGER 10)
+   (BOP DIVIDE
+    (LITERAL INTEGER 22)
+    (LITERAL INTEGER 11)
+   )
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "k is now ")
+     (ID "k")
+     (LITERAL STRING "\12")
+    )
+   )
+  )
+  (FOR "l" -1
+   (BOP SUBTRACT
+    (BOP DIVIDE
+     (BOP SUBTRACT
+      (LITERAL INTEGER 100)
+      (LITERAL INTEGER 63)
+     )
+     (LITERAL INTEGER 3)
+    )
+    (BOP ADD
+     (LITERAL INTEGER 1)
+     (LITERAL INTEGER 1)
+    )
+   )
+   (LITERAL INTEGER 1)
+   (BOP DIVIDE
+    (BOP MULTIPLY
+     (LITERAL INTEGER 4)
+     (LITERAL INTEGER 17)
+    )
+    (LITERAL INTEGER 33)
+   )
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "l is now ")
+     (ID "l")
+     (LITERAL STRING "\12")
+    )
+   )
+  )
+ )

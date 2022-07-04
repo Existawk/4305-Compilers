@@ -1,0 +1,82 @@
+(1:1-4) ID 'Here'
+(1:6-8) ID 'are'
+(1:10-13) ID 'some'
+(1:15-20) ID 'string'
+(1:22-29) ID 'literals'
+(1:30) Illegal character ':' ignored.
+(3:3) Illegal character '"' ignored.
+(3:4-5) ID 'Hi'
+(3:6) Illegal character ',' ignored.
+(3:8-12) ID 'there'
+(3:13) Illegal character '!' ignored.
+(3:14) Illegal character '"' ignored.
+(4:3) Illegal character '"' ignored.
+(4:4-4) ID 'I'
+(4:6-7) ID 'am'
+(4:9-9) ID 'a'
+(4:11-16) ID 'string'
+(4:18-24) ID 'literal'
+(4:25) Illegal character '.' ignored.
+(4:26) Illegal character '"' ignored.
+(5:3) Illegal character '"' ignored.
+(5:4-5) ID 'It'
+(5:7-8) ID 'is'
+(5:10-11) ID 'so'
+(5:13-19) ID 'tedious'
+(5:21-26) ID 'making'
+(5:28-29) ID 'up'
+(5:31-34) ID 'good'
+(5:36-43) ID 'examples'
+(5:44) Illegal character '!' ignored.
+(5:45) Illegal character '"' ignored.
+(6:3) Illegal character '"' ignored.
+(6:4) Illegal character ''' ignored.
+(6:5) Illegal character '"' ignored.
+(8:1-5) ID 'These'
+(8:7-9) ID 'are'
+(8:11-13) ID 'not'
+(8:15-19) ID 'legal'
+(8:21-26) ID 'string'
+(8:28-35) ID 'literals'
+(8:36) Illegal character ':' ignored.
+(10:3) Illegal character '"' ignored.
+(10:4) Illegal character '"' ignored.
+(10:5) Illegal character '"' ignored.
+(11:3) Illegal character '"' ignored.
+(11:4-14) ID 'Abercrombie'
+(11:15) Illegal character '\' ignored.
+(11:16) Illegal character '"' ignored.
+(11:17-19) ID 'and'
+(11:20) Illegal character '\' ignored.
+(11:21) Illegal character '"' ignored.
+(11:22-26) ID 'Fitch'
+(11:27) Illegal character '"' ignored.
+(12:3) Illegal character '"' ignored.
+(12:4-12) ID 'Continued'
+(12:14-15) ID 'on'
+(12:17-19) ID 'the'
+(12:21-24) ID 'next'
+(12:26) Illegal character '.' ignored.
+(12:27) Illegal character '.' ignored.
+(12:28) Illegal character '.' ignored.
+(12:29) Illegal character '\' ignored.
+(13:1) Illegal character '.' ignored.
+(13:2) Illegal character '.' ignored.
+(13:3) Illegal character '.' ignored.
+(13:5-8) ID 'line'
+(13:9) Illegal character '"' ignored.
+(15:1-4) ID 'Were'
+(15:6-8) ID 'you'
+(15:10-18) ID 'surprised'
+(15:20-21) ID 'at'
+(15:23-25) ID 'how'
+(15:27-29) ID 'any'
+(15:31-32) ID 'of'
+(15:34-37) ID 'that'
+(15:39-45) ID 'scanned'
+(15:46) Illegal character '?' ignored.
+(17:1-3) ID 'Why'
+(17:5-6) ID 'or'
+(17:8-10) ID 'why'
+(17:12-14) ID 'not'
+(17:15) Illegal character '?' ignored.

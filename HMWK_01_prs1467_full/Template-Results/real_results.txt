@@ -1,0 +1,77 @@
+(1:1-4) ID 'Here'
+(1:6-8) ID 'are'
+(1:10-13) ID 'some'
+(1:15-18) ID 'real'
+(1:20-27) ID 'literals'
+(1:28) Illegal character ':' ignored.
+(3:5-5) INT_LIT 1
+(3:6) Illegal character '.' ignored.
+(3:7-7) INT_LIT 2
+(3:11-15) INT_LIT 12345
+(3:16) Illegal character '.' ignored.
+(3:17-21) INT_LIT 67890
+(4:5) Illegal character '.' ignored.
+(4:6-6) INT_LIT 0
+(4:10) Illegal character '.' ignored.
+(4:11-15) INT_LIT 54321
+(5:5-5) INT_LIT 0
+(5:6) Illegal character '.' ignored.
+(5:10) Illegal character '.' ignored.
+(5:11-15) INT_LIT 9876
+(7:1-5) ID 'These'
+(7:7-9) ID 'are'
+(7:11-13) ID 'not'
+(7:15-19) ID 'legal'
+(7:21-24) ID 'real'
+(7:26-33) ID 'literals'
+(7:34) Illegal character ':' ignored.
+(9:5-5) INT_LIT 2
+(9:6) Illegal character '.' ignored.
+(9:7) Illegal character '.' ignored.
+(9:8-8) INT_LIT 3
+(9:12) Illegal character '.' ignored.
+(9:13-13) INT_LIT 2
+(9:14) Illegal character '.' ignored.
+(9:15-15) INT_LIT 3
+(9:19-19) INT_LIT 3
+(9:20) Illegal character '.' ignored.
+(9:21-21) INT_LIT 2
+(9:22) Illegal character '.' ignored.
+(9:23-23) INT_LIT 1
+(9:27) Illegal character '-' ignored.
+(9:28) Illegal character '.' ignored.
+(9:29-30) INT_LIT 23
+(9:34) Illegal character '+' ignored.
+(9:35-36) INT_LIT 23
+(9:37) Illegal character '.' ignored.
+(10:5-5) INT_LIT 1
+(10:6) Illegal character '.' ignored.
+(10:7-8) INT_LIT 23
+(10:9-9) ID 'e'
+(10:10) Illegal character '-' ignored.
+(10:11-12) INT_LIT 12
+(10:16-16) INT_LIT 1
+(10:17-17) ID 'e'
+(10:18) Illegal character '+' ignored.
+(10:19-19) INT_LIT 4
+(10:23) Illegal character '.' ignored.
+(10:24-25) INT_LIT 34
+(10:26-27) ID 'e9'
+(10:31) Illegal character '.' ignored.
+(10:32-32) ID 'e'
+(10:33) Illegal character '+' ignored.
+(12:1-4) ID 'Were'
+(12:6-8) ID 'you'
+(12:10-18) ID 'surprised'
+(12:20-21) ID 'at'
+(12:23-25) ID 'how'
+(12:27-29) ID 'any'
+(12:31-32) ID 'of'
+(12:34-37) ID 'that'
+(12:39-45) ID 'scanned'
+(12:46) Illegal character '?' ignored.
+(14:1-3) ID 'Why'
+(14:5-6) ID 'or'
+(14:8-10) ID 'why'
+(14:12-14) ID 'not'
+(14:15) Illegal character '?' ignored.

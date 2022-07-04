@@ -1,0 +1,143 @@
+(1:1-4) ID 'This'
+(1:6-7) ID 'is'
+(1:9-9) ID 'a'
+(1:11-14) ID 'file'
+(1:16-17) ID 'of'
+(1:19-24) ID 'things'
+(1:26-29) ID 'that'
+(1:31-35) ID 'match'
+(1:37-39) ID 'the'
+(1:41-42) ID 'ID'
+(1:44-50) ID 'regular'
+(1:52-61) ID 'expression'
+(1:62) Illegal character '.' ignored.
+(3:1-4) ID 'Well'
+(3:5) Illegal character ',' ignored.
+(3:7-12) ID 'except'
+(3:14-16) ID 'for'
+(3:18-20) ID 'the'
+(3:22-32) ID 'punctuation'
+(3:34-40) ID 'symbols'
+(3:41) Illegal character ',' ignored.
+(3:43-47) ID 'which'
+(3:49-52) ID 'will'
+(3:54-57) ID 'show'
+(3:59-60) ID 'up'
+(3:62-63) ID 'as'
+(4:1-7) ID 'illegal'
+(4:9-18) ID 'characters'
+(4:19) Illegal character '.' ignored.
+(6:1-8) ID 'Remember'
+(6:9) Illegal character ',' ignored.
+(6:11-12) ID 'an'
+(6:14-15) ID 'ID'
+(6:17-19) ID 'can'
+(6:21-25) ID 'start'
+(6:27-30) ID 'with'
+(6:32-32) ID 'a'
+(6:34-34) ID '_'
+(6:36-37) ID 'so'
+(6:39-43) ID '_Fred'
+(6:45-46) ID 'is'
+(6:48-48) ID 'a'
+(6:50-54) ID 'legal'
+(6:56-57) ID 'ID'
+(6:58) Illegal character '.' ignored.
+(8:1-4) ID 'Also'
+(8:5) Illegal character ',' ignored.
+(8:7-7) ID '_'
+(8:9-10) ID 'is'
+(8:12-12) ID 'a'
+(8:14-18) ID 'legal'
+(8:20-21) ID 'ID'
+(8:23-24) ID 'by'
+(8:26-31) ID 'itself'
+(8:32) Illegal character ',' ignored.
+(8:34-35) ID 'so'
+(8:37-37) ID '_'
+(8:39-40) ID 'is'
+(8:42-43) ID 'OK'
+(8:45-46) ID 'as'
+(8:48-49) ID 'is'
+(8:51-53) ID '___'
+(8:54) Illegal character '.' ignored.
+(10:1-6) ID 'Digits'
+(10:8-10) ID 'are'
+(10:12-14) ID 'not'
+(10:16-22) ID 'allowed'
+(10:24-25) ID 'at'
+(10:27-29) ID 'the'
+(10:31-35) ID 'front'
+(10:37-38) ID 'of'
+(10:40-41) ID 'an'
+(10:43-44) ID 'ID'
+(10:46-47) ID 'so'
+(10:49-52) INT_LIT 123
+(10:54-55) ID 'is'
+(10:57-59) ID 'not'
+(10:61-61) ID 'a'
+(11:1-5) ID 'legal'
+(11:7-8) ID 'ID'
+(11:9) Illegal character '.' ignored.
+(11:12) Illegal character '(' ignored.
+(11:13-14) ID 'It'
+(11:15) Illegal character ''' ignored.
+(11:16-16) ID 's'
+(11:18-19) ID 'an'
+(11:21-27) ID 'integer'
+(11:29-35) ID 'literal'
+(11:36) Illegal character ',' ignored.
+(11:38-39) ID 'of'
+(11:41-46) ID 'course'
+(11:47) Illegal character '.' ignored.
+(11:48) Illegal character ')' ignored.
+(13:1-4) ID 'Even'
+(13:6-7) ID 'if'
+(13:9-9) ID 'a'
+(13:11-15) ID 'token'
+(13:17-19) ID 'has'
+(13:21-24) ID 'some'
+(13:26-32) ID 'letters'
+(13:34-35) ID 'or'
+(13:37-47) ID 'underscores'
+(13:49-53) ID 'after'
+(13:55-57) ID 'the'
+(14:1-5) ID 'digit'
+(14:6) Illegal character '(' ignored.
+(14:7-7) ID 's'
+(14:8) Illegal character ')' ignored.
+(14:9) Illegal character ',' ignored.
+(14:11-12) ID 'it'
+(14:13) Illegal character ''' ignored.
+(14:14-14) ID 's'
+(14:16-20) ID 'still'
+(14:22-24) ID 'not'
+(14:26-26) ID 'a'
+(14:28-32) ID 'legal'
+(14:34-35) ID 'ID'
+(14:36) Illegal character '.' ignored.
+(14:39-40) ID 'So'
+(14:42-42) INT_LIT 0
+(14:43-47) ID '_Fred'
+(14:49-53) ID 'doesn'
+(14:54) Illegal character ''' ignored.
+(14:55-55) ID 't'
+(14:57-60) ID 'work'
+(14:62-63) ID 'as'
+(14:65-66) ID 'an'
+(15:1-2) ID 'ID'
+(15:3) Illegal character '.' ignored.
+(17:1-4) ID 'Were'
+(17:6-8) ID 'you'
+(17:10-18) ID 'surprised'
+(17:20-21) ID 'at'
+(17:23-25) ID 'how'
+(17:27-27) INT_LIT 0
+(17:28-32) ID '_Fred'
+(17:34-40) ID 'scanned'
+(17:41) Illegal character '?' ignored.
+(19:1-3) ID 'Why'
+(19:5-6) ID 'or'
+(19:8-10) ID 'why'
+(19:12-14) ID 'not'
+(19:15) Illegal character '?' ignored.

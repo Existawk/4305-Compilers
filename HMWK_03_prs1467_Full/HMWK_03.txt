@@ -1,0 +1,412 @@
+#-----------------------------------------------------------------
+Assignment 03
+
+#-----------------------------------------------------------------
+Purpose:
+
+  * Demonstrate working flex / bison / C development environment.
+
+  * Demonstrate ability to write some simple routines to add the
+      necessary processing to support lexical / syntactic
+      structures.
+
+#-----------------------------------------------------------------
+Background:
+
+  * Just an extension of the Lang example, with some of the Calc
+    example and HMWK 02 thrown in.
+
+  * The break statement is very simple -- it's just the keyword
+      "break".
+
+      When dumping this node, it's just "(BREAK)", with the
+      proper indentation.
+
+  * The continue statement is also very simple -- it's just the
+      keywork "continue".
+
+      When dumping this node, it's just "(CONTINUE)", with the
+      proper indentation.
+
+  * Hex escape sequences in string literals are not complex.  They
+      have the format \xN or \xNN, where N is a hex digit, that is,
+      0-9 or a-f or A-F.  Remember, they occur only inside string
+      literals.
+
+      Hex escape sequences do not get dumped by themselves.  They
+      become characters in a string literal.
+
+  * The for statement has one of these two forms:
+
+        for <id> <- <startExpr> to <stopExpr>
+            [ by <stepExpr> ] <block>
+
+        for <id> <- <startExpr> downto <stopExpr>
+            [ by <stepExpr> ] <block>
+
+      The items in < > marks indicate syntactic categories.  The
+      item in [ ] mark is optional;  if the step expression is
+      omitted when the direction is "to", it should default to a
+      +1 integer literal.  If the direction is "downto", it should
+      default to a -1 integer literal.
+
+      When dumping this node, it looks like this,
+
+        (FOR "<id>" <direction>
+          <startExpr>
+          <stopExpr>
+          <stepExpr>
+          <body>
+        )
+
+      with the proper indentation.
+
+      The name of the index variable <id> is printed inside
+      quotation marks.  The <direction> of the loop is printed as
+      1 or -1, the former for "to" loops, the latter for "downto"
+      loops.
+
+      The <startExpr>, <stopExpr>, <stepExpr>, and <body> are then
+      dumped, each at one more level of indentation.
+
+#-----------------------------------------------------------------
+Tasks:
+
+  1. Download hmwk_03_dalioba.zip from Canvas.
+
+  2. Unzip the file somewhere convenient.
+
+  3. Change 'dalioba' in the name of the directory to your NetID.
+     (Your NetID is three letters followed by four or five digits.
+      The directory name will now be something like
+      'hmwk_03_abc1234' but with _your_ NetID in place of
+      'abc1234'.)
+
+  4. The starting source for this assignment is all from the Lang
+      example.  Copy the files from that zip to this directory.
+
+  5. Change the header lines in the source files.
+
+      -- Line 1:  Family name first, then a comma, then
+                  personal name.
+
+      -- Line 2:  Your NetID.
+
+      -- Line 3:  The date you edited the file, in the format
+                  YYYY-MM-DD (all digits!).
+
+  6. Make lang and run it on the supplied test.asl file.  You
+      should get a test.parse that matches the one distributed
+      with the Lang example zip.  (For your reference, test.asl
+      is also in the Examples/ directory here and test.parse is in
+      the Results/ directory.)
+
+  7. Now add the four enhancements described above in the
+      "Background" section.
+
+      The items are listed in order of complexity, so it's easiest
+      to start with the first one (the "break" statement) and do
+      them one by one.
+
+      As each is completed, make lang and run it against the
+      corresponding exercise in Examples/.  You should get the
+      results as shown in the matching Results/ file. (Your output
+      should match EXACTLY).
+
+#-----------------------------------------------------------------
+Submission:
+
+Make a zipfile of your 'hmwk_03_abc1234' directory (with 'abc1234'
+changed to YOUR NetID and with four files lexer.l, node.c, node.h,
+parser.y in it) and submit this zipfile on Canvas as your results
+for this assignment.
+
+All your zipfile should include is a directory with four files in
+it, your versions of lexer.l, node.c, node.h, and parser.y (did
+you update the headers correctly?).
+
+Do NOT include any other files.
+
+#-----------------------------------------------------------------
+Hints:
+  1. Ensure your program compiles and runs correctly.  You should
+      not get ANY warnings or errors when you compile.  ALWAYS
+      compile your code with -Wall and -Wextra and deal with ANY
+      warnings or errors that are identified.  ALWAYS compile your
+      code with -fsanitize=leak and -fsanitize=address and deal
+      with ANY warnings or errors reported.
+
+     Generating warnings or errors, not compiling, not running,
+      core dumping, crashing, going into an infinite loop, getting
+      the wrong answers, getting memory errors ... will earn you
+      ZERO points.
+
+     Ensure your output messages match the format shown in the
+      results files.  The output is going to be checked by a
+      program, so it has to match EXACTLY.  Not matching EXACTLY
+      will earn you ZERO points.
+
+     ('EXACTLY' means character-by-character the same.  No, e.g.,
+      differences in spacing, no changes in wording, no changes
+      in punctuation, no changes in capitalization, and so forth.)
+
+  2. Ensure that you update the three header lines in the source
+      file with YOUR name (family name first, then a comma, then
+      your personal name), YOUR NetID, and the date you edit the
+      file, in the format YYYY-MM-DD (all digits!).
+
+     Not updating the header lines properly will cost you points.
+
+  3. Ensure your submission is packaged EXACTLY as has been
+      described above.
+
+      -- Your submission should be a ZIP FILE (not a tar, rar, gz,
+         or any other kind of compressed file).
+
+      -- The zip file should be named 'hmwk_03_abc1234.zip' (with
+         'abc1234' replaced with YOUR NetID).
+
+      -- This zip file should have ONE item in it, a directory
+         named 'hmwk_03_abc1234'  (with 'abc1234' replaced with
+         YOUR NetID).
+
+      -- Your files should be in that directory.  The files should
+         be named lexer.l, node.c, node.h, and parser.y.
+
+     Submissions in the wrong format score ZERO points.
+
+  4. Your submission is going to be tried against other test
+      files when it's evaluated for credit.  You DEFINITELY need
+      to make some test cases of your own to ensure that your
+      code is working properly (and that you didn't disturb
+      anything else in the skeleton).
+
+  5. This is not a lot of work.  The reference solution has this
+      many lines of code for each of the required additons:
+
+    break statement
+    ---------------
+      [ 4] node.c     add 'case nBREAKSTMT' to _dumpNodeInternal()
+      [ 5] node.c     create makeBreak() routine
+      [ 1] node.h     add declaration for makeBreak()
+      [ 1] parser.y   add %type directive for breakStmt
+      [ 1] parser.y   add breakStmt as alternative to item
+      [ 3] parser.y   add breakStmt rule
+    --------
+       15 LOC
+
+    continue statement
+    ------------------
+      [ 4] node.c     add 'case nCONTINUESTMT' to _dumpNodeInternal()
+      [ 5] node.c     create makeContinue() routine
+      [ 1] node.h     add declaration for makeContinue()
+      [ 1] parser.y   add %type directive for continueStmt
+      [ 1] parser.y   add continueStmt as alternative to item
+      [ 3] parser.y   add continueStmt rule
+    --------
+       15 LOC
+
+    Hex escape sequences in string literals
+    ---------------------------------------
+      [ 1] lexer.l    update ESCAPE_CHAR to include the hex form
+      [ 6] node.c     update makeLitString() to scan the hex form
+    --------
+        7 LOC
+
+    for statement
+    -------------
+      [10] node.c     add 'case nFORSTMT' to _dumpNodeInternal()
+      [11] node.c     create makeFor() routine
+      [ 6] node.h     add fields for For statement to struct _Node
+      [ 1] node.h     add declaration for makeFor()
+      [ 1] parser.y   add intVal to %union directive
+      [ 2] parser.y   add %type directives for forStmt, stepOpt, toDownto
+      [ 1] parser.y   add forStmt as alternative to item
+      [ 8] parser.y   add forStmt rule
+      [ 4] parser.y   add toDownto rule
+      [ 4] parser.y   add stepOpt rule
+    --------
+       48 LOC
+
+      for a grand total of 85 lines of code.  Easy!
+
+  6. Pretty much everything you have to do for this assignment is
+      already in the code in one form or another for a construct
+      that already exists.  Therefore there are examples you can
+      look at when adding the new stuff.
+
+      Let's consider that in detail for the break statement.  This
+      is as close to trivial as it's possible to be!
+
+      In parser.y, (1) create a %type directive for breakStmt --
+      this directive will look just like the ones for ifStmt,
+      readStmt, whileStmt, writeStmt, ...
+
+      (2) add breakStmt as an alternative to the item rule -- this
+      will look just like the alternatives for ifStmt, readStmt,
+      whileStmt, writeStmt ...
+
+      (3) add a rule for breakStmt -- this will be similar to the
+      rules for ifStmt, readStmt, whileStmt, writeStmt, ... except
+      even EASIER as the break statement is JUST THE ONE KEYWORD
+      tok_BREAK!
+
+      In node.c, (1) in _dumpNodeInternal() add a case for
+      nBREAKSTMT to the switch statement.  All you need to do in
+      this case is an fprintf() that prints "(BREAK)" with the
+      proper indentation.
+
+      (2) Create a makeBreak() routine.  Since the break statement
+      has no other parts (it's just the keyword "break"), this
+      routine takes no arguments.  Allocate a node of type
+      nBREAKSTMT and return it.
+
+      In node.h, (1) create a declaration for the makeBreak()
+      routine.
+
+      And that's it for the break statement!  Easy, huh?
+
+  7. For the continue statement, do everything you just did for
+      the break statement, but replace break with continue.  Super
+      easy, right?
+
+  8. Hex escape sequences are pretty easy to add because the code
+      already supports octal escape sequences.
+
+      You need to make one change in lexer.l, in the definition of
+      ESCAPE_CHAR.  This definition already supports the "single
+      character" escape sequences (\a, \n, \", etc.) and octal
+      escape sequences (\12, \377, \0, etc.).  Just add an
+      alternative in here that supports \xN and \xNN, where N is
+      a hex digit.  There's even a defined name HEXIT for hex
+      digits you can use.  (In the reference solution, adding this
+      to ESCAPE_CHAR took 16 characters.  Simple!)
+
+      In node.c, you have to update makeLitString() so it will
+      scan the hex escape sequences.  This isn't hard as there's
+      already a case for dealing with octal escape sequences that
+      you can use as a reference.  Add a "case 'x'" to the
+      switch() statement -- value[i] will be an 'x' when you're at
+      the point of seeing a hex escape sequence since you've just
+      gone past the \ character.  Then use strtol() to scan the
+      next characters in base 16.  (Don't forget to start the scan
+      on the character _after_ the x.)
+
+      With these two changes, hex escape sequences in string
+      literals will now be accepted.  (You DO NOT have to make any
+      changes to _dumpStringReadable().  Why not?)
+
+  9. Finally we get to the for statement.  Much of what is done
+      for this statement is similar to what you did for the break
+      and continue statements so it's easy to get started.
+
+      In parser.y, (1) create a %type directive for forStmt.
+
+      (2) add forStmt as an alternative to the item rule.
+
+      (3) add a rule for forStmt.  When you're writing this rule,
+      you will realize that you have to create two more
+      nonterminals, one for deciding between "to" and "downto" and
+      one to deal with the optional "by" expression.  Call the
+      former nonterminal toDownto and the latter stepOpt.
+
+      (4) add a %type directive for stepOpt.
+
+      (5) add a rule for stepOpt -- it can be either epsilon, in
+      which case its value is NULL, or it can be the keyword "by"
+      followed by an expression, in which case its value is that
+      expression.
+
+      (6) you also need a %type directive for toDownto, but this
+      nonterminal is different from all of the others in that it
+      returns NOT a node structure, but an integer flag.  You need
+      to augment the %union directive to be able to represent that
+      integer flag, so add a new field intVal of type int to it.
+      Now you can make a %type directive for toDownto which marks
+      it as <intVal>.
+
+      (7) When writing the rule for toDownto, its value is +1 in
+      the "to" case and -1 in the "downto" case.
+
+      (8) When writing the processing routine for the forStmt
+      rule, you have to deal with the possibility that the step
+      expression was omitted.  If it's omitted (which you can tell
+      by its value being NULL), just use instead an integer
+      literal of whatever toDownto returned.  This way there will
+      be no NULL pointers passed to makeFor().
+
+      Take a look at the declaration rule.  Each alternative here
+      deals with initOpt possibly being NULL by making a literal
+      of the appropriate type to take its place.
+
+      By doing this, we ensure that the generated node structure
+      will have appropriate entries for all of its slots.  This
+      keeps us from referencing a NULL pointer when we're dumping
+      the node.
+
+      OK, after adding that stuff to parser.y, the rest is pretty
+      simple.
+
+      In node.c, (1) in _dumpNodeInternal() add a case for
+      nFORSTMT to the switch statement.  This is a little more
+      complicated than what you did for nBREAKSTMT and
+      nCONTINUESTMT, but not by much.
+
+      The dump of nFORSTMT is similar to the dumps of nREADSTMT,
+      nWHILESTMT, and nWRITESTMT in that you first fprintf the
+      (FOR ... line (at indentation level indent), then dump the
+      fields (at indent+1 indentation level), then fprintf the
+      close ) (at indentation level indent).
+
+      The FOR line will look something like this:
+
+          (FOR "i" 1
+
+      or
+
+          (FOR "fred" -1
+
+      depending on the name of the index variable and the
+      direction of the loop.  Take a look at the Results/for.parse
+      file for some examples of how it should look.
+
+      Be careful that you dump the other fields in the correct
+      order:  the start expression, the stop expression, the step
+      expression, and lastly the body.
+
+      Also in node.c, (2) create a makeFor() routine.  This
+      routine will take six arguments representing the parts of
+      the for statement.  Allocate a node of type nFORSTMT and
+      stuff the values in the fields.  Return the allocated node
+      as the value of this function.
+
+      In node.h, (1) add the fields for the parts of the for
+      statement to the struct _Node.  (There are already comments
+      in there for what you have to add.)
+
+      And FINALLY, (2) add the declaration for makeFor().
+
+      Ta-da!  All done!
+
+ 10. A very common mistake is to leave a field of the node
+      structure NULL.  If you do this, you will get a crash when
+      trying to dump the parse tree.  (The NULL value gets
+      dereferenced as a pointer.)
+
+      To avoid this, ensure that in parse.y whenever an optional
+      construct exists, it get replaced with an appropriate
+      default value.  You can see examples of how this was done
+      with the optional initializer expression in the declaration
+      rule and the optional else clause in the ifStmt rule.
+
+ 11. After you submit your zip file on Canvas, download it from
+      Canvas into an empty directory, unzip it, and check that
+      your submission is in the proper format, that the program
+      runs and prints the correct output, that you updated the
+      header lines correctly, and so forth.
+
+ 12. Are you CERTAIN you complied with all of these nit-picking
+      instructions?  Really?  Maybe you ought to check just one
+      more time. :)
+
+#-----------------------------------------------------------------

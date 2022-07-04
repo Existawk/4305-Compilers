@@ -1,0 +1,56 @@
+(1:1-4) ID 'Here'
+(1:6-8) ID 'are'
+(1:10-13) ID 'some'
+(1:15-21) ID 'integer'
+(1:23-30) ID 'literals'
+(1:31) Illegal character ':' ignored.
+(3:5-5) INT_LIT 0
+(3:9-9) INT_LIT 1
+(3:13-13) INT_LIT 2
+(3:17-17) INT_LIT 3
+(3:21-22) INT_LIT 1
+(3:26-28) INT_LIT 12
+(3:32-35) INT_LIT 123
+(5:1-5) ID 'These'
+(5:7-9) ID 'are'
+(5:11-13) ID 'not'
+(5:15-19) ID 'legal'
+(5:21-27) ID 'integer'
+(5:29-36) ID 'literals'
+(5:37) Illegal character ':' ignored.
+(7:5) Illegal character '-' ignored.
+(7:6-7) INT_LIT 37
+(7:11) Illegal character '+' ignored.
+(7:12-14) INT_LIT 113
+(7:18-19) INT_LIT 16
+(7:20) Illegal character '.' ignored.
+(7:21-22) INT_LIT 75
+(7:26-32) ID 'fifteen'
+(7:36) Illegal character '+' ignored.
+(7:37-37) INT_LIT 1
+(7:38) Illegal character '.' ignored.
+(7:39-40) INT_LIT 34
+(7:41-41) ID 'e'
+(7:42) Illegal character '+' ignored.
+(7:43-44) INT_LIT 34
+(8:5-5) INT_LIT 0
+(8:6-9) ID 'xABC'
+(8:13-13) INT_LIT 0
+(8:14-18) ID 'b0110'
+(8:22-22) INT_LIT 0
+(8:23-26) ID 'o377'
+(10:1-4) ID 'Were'
+(10:6-8) ID 'you'
+(10:10-18) ID 'surprised'
+(10:20-21) ID 'at'
+(10:23-25) ID 'how'
+(10:27-29) ID 'any'
+(10:31-32) ID 'of'
+(10:34-37) ID 'that'
+(10:39-45) ID 'scanned'
+(10:46) Illegal character '?' ignored.
+(12:1-3) ID 'Why'
+(12:5-6) ID 'or'
+(12:8-10) ID 'why'
+(12:12-14) ID 'not'
+(12:15) Illegal character '?' ignored.

@@ -1,0 +1,171 @@
+ (BLOCK
+  (DECLARATION integer "a"
+   (LITERAL INTEGER 17)
+  )
+  (DECLARATION real "b"
+   (BOP MULTIPLY
+    (ID "a")
+    (LITERAL REAL 1.2345000000000001e+01)
+   )
+  )
+  (DECLARATION integer "c"
+   (LITERAL INTEGER 0)
+  )
+  (DECLARATION string "d"
+   (BOP ADD
+    (BOP ADD
+     (LITERAL STRING "<Front of string>")
+     (LITERAL STRING " ")
+    )
+    (LITERAL STRING "<back of string>")
+   )
+  )
+  (DECLARATION real "e"
+   (LITERAL REAL 0.0000000000000000e+00)
+  )
+  (DECLARATION string "f"
+   (LITERAL STRING "")
+  )
+  (WRITE
+   (LITERAL STRING "What is c? ")
+  )
+  (READ
+   (ID "c")
+  )
+  (WRITE
+   (LITERAL STRING "What are e and f? ")
+  )
+  (READ
+   (ID "e")
+   (ID "f")
+  )
+  (BOP ASSIGN
+   (ID "a")
+   (BOP ADD
+    (BOP ADD
+     (UOP POSITE
+      (LITERAL INTEGER 1)
+     )
+     (LITERAL INTEGER 2)
+    )
+    (UOP NEGATE
+     (LITERAL INTEGER 3)
+    )
+   )
+  )
+  (BOP ASSIGN
+   (ID "b")
+   (BOP MULTIPLY
+    (LITERAL REAL 4.5000000000000000e+00)
+    (BOP EXPONENT
+     (LITERAL REAL 6.7000000000000002e+00)
+     (LITERAL REAL 8.9000000000000004e+00)
+    )
+   )
+  )
+  (BOP ASSIGN
+   (ID "c")
+   (BOP SUBTRACT
+    (BOP ADD
+     (BOP DIVIDE
+      (LITERAL REAL 1.2000000000000000e-01)
+      (LITERAL REAL 3.4500000000000000e+01)
+     )
+     (LITERAL REAL 6.7800000000000002e+00)
+    )
+    (LITERAL INTEGER 9)
+   )
+  )
+  (BOP ASSIGN
+   (ID "d")
+   (BOP SUBTRACT
+    (ID "d")
+    (LITERAL STRING "o")
+   )
+  )
+  (BOP ASSIGN
+   (ID "e")
+   (BOP MULTIPLY
+    (ID "pi")
+    (BOP EXPONENT
+     (ID "a")
+     (LITERAL INTEGER 2)
+    )
+   )
+  )
+  (BOP ASSIGN
+   (ID "f")
+   (BOP MULTIPLY
+    (LITERAL STRING "' \" ? \\ \7 \10 \14 \12 \15 \11 \13 q\1w\22e\377rty")
+    (LITERAL INTEGER 2)
+   )
+  )
+  (WRITE
+   (LITERAL STRING "a = ")
+   (ID "a")
+   (LITERAL STRING ", b = ")
+   (ID "b")
+   (LITERAL STRING "\12")
+  )
+  (WRITE
+   (LITERAL STRING "c = ")
+   (ID "c")
+   (LITERAL STRING ", d = ")
+   (ID "d")
+   (LITERAL STRING "\12")
+  )
+  (WRITE
+   (LITERAL STRING "e = ")
+   (ID "e")
+   (LITERAL STRING ", f = ")
+   (ID "f")
+   (LITERAL STRING "\12")
+  )
+  (IF
+   (BOP EQUALS
+    (ID "a")
+    (ID "c")
+   )
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "If-without-else then block\12")
+    )
+   )
+   (BLOCK
+   )
+  )
+  (IF
+   (BOP NOT_EQUALS
+    (ID "d")
+    (ID "f")
+   )
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "If-with-else then block\12")
+    )
+   )
+   (BLOCK
+    (WRITE
+     (LITERAL STRING "If-with-else else block\12")
+    )
+   )
+  )
+  (WHILE
+   (BOP EQUALS
+    (ID "c")
+    (ID "a")
+   )
+   (BLOCK
+    (BOP ASSIGN
+     (ID "a")
+     (BOP ADD
+      (ID "c")
+      (LITERAL INTEGER 1)
+     )
+    )
+    (WRITE
+     (LITERAL STRING "while body\12")
+    )
+   )
+  )
+ )

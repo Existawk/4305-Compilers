@@ -1,0 +1,41 @@
+
+
+To add a new statement "foo":
+
+    Add a nonterminal ("fooStmt") for the "foo" statement to the
+    definition of the nonterminal "item".
+
+    Create a %type declaration for the nonterminal "fooStmt".
+    (Its returned type will be "node", just like every other
+     statment.)
+
+    Create a CFG rule for the nonterminal "fooStmt" based on
+    whatever the syntactic structure for this statement is.
+
+    Create tok_... for any new keywords that are required for
+    the syntactic structure of "fooStmt".  This means,
+        Make a %token declaration for each of the tok_...
+        Make an entry in keywords[] for each keyword / tok_...
+
+    If any new nonterminals have to be created (e.g, like "ifStmt"
+    needed "elseOpt"), write appropriate rules for them and ensure
+    that they also get appropriate %type declarations, CFG rules,
+    etc.
+
+    Create the appropriate processing routine for all of the
+    newly created nonterminals.  You will need a "makeFoo()"
+    function.
+
+    Add an entry "nFOOSTMT" to enum _NodeKind in node.h.  At the
+    same time add a descriptive word to _nodeKindStr[] to match.
+
+    Add the required fields to struct _Node in node.h.  These
+    fields hold whatever information is required for an instance
+    of this statement.
+
+    Update _dumpNodeInternal() in node.c so it knows how to dump
+    an instance of this statement.
+
+    Create a "makeFoo()" function in node.c to make an instance of
+    this kind of statement.  (Also put an extern decl for this
+    function in node.h.)

@@ -1,0 +1,229 @@
+#-----------------------------------------------------------------
+Assignment 01
+
+#-----------------------------------------------------------------
+Purpose:
+
+  * Demonstrate working flex / C development environment.
+
+  * Demonstrate ability to write a simple Regular Expression for
+      a token category and its associated processing routine.
+
+#-----------------------------------------------------------------
+Background:
+
+  * You need some packages installed to do the assignments.
+      Get them!  In particular,
+        - build-essential
+        - flex
+
+  * Here's the version information from my Raspberry Pi 3
+    installation:
+
+  $ apt-cache policy build-essential
+  build-essential:
+    Installed: 12.6
+    Candidate: 12.6
+    Version table:
+   *** 12.6 500
+          500 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages
+          100 /var/lib/dpkg/status
+
+  $ apt-cache policy flex
+  flex:
+    Installed: 2.6.4-6.2
+    Candidate: 2.6.4-6.2
+    Version table:
+   *** 2.6.4-6.2 500
+          500 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages
+          100 /var/lib/dpkg/status
+
+#-----------------------------------------------------------------
+Tasks:
+
+  1. Download hmwk_01_dalioba.zip from Canvas.
+
+  2. Unzip the file somewhere convenient.
+
+  3. Change 'dalioba' in the name of the directory to your NetID.
+     (Your NetID is three letters followed by four or five digits.
+      The directory name will now be something like
+      'hmwk_01_abc1234' but with _your_ NetID in place of
+      'abc1234'.)
+
+  4. Look in that directory.  There's a Template subdirectory that
+     has some files in it.  Move them up one level into the
+     'hmwk_01_abc1234' directory.
+
+  5. Change the header lines in the files myLexer.l.
+
+      -- Line 1:  Family name first, then a comma, then
+                  personal name.
+
+      -- Line 2:  Your NetID.
+
+      -- Line 3:  The date you edited the file, in the format
+                  YYYY-MM-DD (all digits!).
+
+  6. Compile and run the template as follows,
+
+    $ make clean
+    rm -f *.o myLexer lex.yy.[ch] minimal?.tab.[ch]
+
+    $ make
+    flex myLexer.l
+    %option yylineno entails a performance penalty ONLY on rules that can match newline characters
+    flex version 2.6.4 usage statistics:
+      scanner options: -ppsvB8 -Cem
+      31/2000 NFA states
+      13/1000 DFA states (51 words)
+      5 rules
+      Compressed tables always back-up
+      1/40 start conditions
+      21 epsilon states, 12 double epsilon states
+      9/100 character classes needed 131/500 words of storage, 0 reused
+      30 state/nextstate pairs created
+      27/3 unique/duplicate transitions
+      15/1000 base-def entries created
+      24/2000 (peak 17) nxt-chk entries created
+      4/2500 (peak 14) template nxt-chk entries created
+      0 empty table entries
+      3 protos created
+      2 templates created, 3 uses
+      7/256 equivalence classes created
+      2/256 meta-equivalence classes created
+      0 (0 saved) hash collisions, 17 DFAs equal
+      0 sets of reallocations needed
+      341 total table entries needed
+    gcc -g -Wall -Wextra -fsanitize=address -fsanitize=leak -static-libasan -o myLexer lex.yy.c
+    $
+
+  7. Once you can build myLexer without error, run it on the
+      examples in the Examples/ subdirectory like this,
+
+    $ ./myLexer Examples/id.asl   > id-output.txt
+    $ ./myLexer Examples/int.asl  > int-output.txt
+    $ ./myLexer Examples/real.asl > real-output.txt
+    $ ./myLexer Examples/str.asl  > str-output.txt
+
+      By capturing the results in a text file, you can then use
+      diff to compare your results to those in the
+      Template-Results/ subdirectory.
+
+      Your results should match EXACTLY.  (And by "EXACTLY", I
+      mean character-by-character identical.)
+
+      If your results are not matching EXACTLY, stop here and
+      figure out what's wrong.  There's no point in going any
+      further if you cannot get the results from the Template to
+      match.  (After all, if these don't match, how can you trust
+      what happens after you write your own code?)
+
+  8. Now edit myLexer.l and add:
+      (a) A rule for REAL_LIT (line 86 in the template myLexer.l).
+
+      (b) A rule for STR_LIT (line 99 in the template myLexer.l).
+
+      Both spots are marked with TODO: comments, so you shouldn't
+      have any trouble identifying where each bit of work goes.
+
+      Everything else to support these rules has already been done
+      for you, so it's just the rule itself you have to create.
+
+      Remember, a rule consists of two parts, the Pattern that
+      gives the regular expression that will match characters and
+      the Processing that will deal with the characters once they
+      have been matched.
+
+  9. Once you have written these two rules, rebuild myLexer and
+      run it again on the examples.  Save the results you get for
+      each example and this time compare them to those in the
+      Final-Results/ subdirectory.
+
+      If you've done everything properly, your results should
+      match those in Final-Results/ EXACTLY.
+
+#-----------------------------------------------------------------
+Submission:
+
+Make a zipfile of your 'hmwk_01_abc1234' directory (with 'abc1234'
+changed to YOUR NetID and with your myLexer.l file in it) and
+submit this zipfile on Canvas as your results for this assignment.
+
+All your zipfile should include is a directory with one file in
+it, your version of myLexer.l (did you update the headers
+correctly?).
+
+Do NOT include any other files.
+
+#-----------------------------------------------------------------
+Hints:
+  1. Ensure your program compiles and runs correctly.  You should
+      not get ANY warnings or errors when you compile.  ALWAYS
+      compile your code with -Wall and -Wextra and deal with ANY
+      warnings or errors that are identified.  ALWAYS compile your
+      code with -fsanitize=leak and -fsanitize=address and deal
+      with ANY warnings or errors reported.
+
+     Generating warnings or errors, not compiling, not running,
+      core dumping, crashing, going into an infinite loop, getting
+      the wrong answers, getting memory errors ... will earn you
+      ZERO points.
+
+     Ensure your output messages match the format shown in the
+      results files.  The output is going to be checked by a
+      program, so it has to match EXACTLY.  Not matching EXACTLY
+      will earn you ZERO points.
+
+     ('EXACTLY' means character-by-character the same.  No, e.g.,
+      differences in spacing, no changes in wording, no changes
+      in punctuation, no changes in capitalization, and so forth.)
+
+  2. Ensure that you update the three header lines in the source
+      file with YOUR name (family name first, then a comma, then
+      your personal name), YOUR NetID, and the date you edit the
+      file, in the format YYYY-MM-DD (all digits!).
+
+     Not updating the header lines properly will cost you points.
+
+  3. Ensure your submission is packaged EXACTLY as has been
+      described above.
+
+      -- Your submission should be a ZIP FILE (not a tar, rar, gz,
+         or any other kind of compressed file).
+
+      -- The zip file should be named 'hmwk_01_abc1234.zip' (with
+         'abc1234' replaced with YOUR NetID).
+
+      -- This zip file should have ONE item in it, a directory
+         named 'hmwk_01_abc1234'  (with 'abc1234' replaced with
+         YOUR NetID).
+
+      -- Your file should be in that directory.  The file should
+         be named myLexer.l.
+
+     Submissions in the wrong format score ZERO points.
+
+  4. Your submission is going to be tried against other test
+      files when it's evaluated for credit.  You DEFINITELY need
+      to make some test cases of your own to ensure that your
+      regular expressions for tok_REAL_LIT and tok_STR_LIT are
+      working properly (and that you didn't disturb anything
+      else in the lexer).
+
+  5. This is not a lot of work.  In the reference solution, the
+      REAL_LIT rule is five (5) lines of code, not including the
+      comments.  The STR_LIT rule is four (4) lines of code, not
+      including the comments.
+
+  6. After you submit your zip file on Canvas, download it from
+      Canvas into an empty directory, unzip it, and check that
+      your submission is in the proper format, that the program
+      runs and prints the correct output, that you updated the
+      header lines correctly, and so forth.
+
+  7. Are you CERTAIN you complied with all of these nit-picking
+      instructions?  Really?  Maybe you ought to check just one
+      more time. :)
+
+#-----------------------------------------------------------------
